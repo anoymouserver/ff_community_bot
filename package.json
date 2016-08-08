@@ -1,0 +1,17 @@
+{
+  "name": "ff_community_bot",
+  "version": "1.0.0",
+  "description": "This is a Telegram Bot for Freifunk communities.",
+  "devDependencies": {
+    "standard": "*"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://https://github.com/anoymouserver/ff_community_bot.git"
+  },
+  "author": "anoymouserver",
+  "license": "MIT"
+}
