@@ -2,10 +2,16 @@
   "name": "ff_community_bot",
   "version": "1.0.0",
   "description": "This is a Telegram Bot for Freifunk communities.",
+  "main": "bot.js",
+  "dependencies": {
+    "lodash": "^4.14.1",
+    "telegram-bot-api": "^1.2.0"
+  },
   "devDependencies": {
     "standard": "*"
   },
   "scripts": {
+    "start": "node bot.js",
     "test": "standard"
   },
   "repository": {
