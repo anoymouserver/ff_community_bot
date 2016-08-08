@@ -5,6 +5,7 @@
   "main": "bot.js",
   "dependencies": {
     "lodash": "^4.14.1",
+    "request": "^2.74.0",
     "telegram-bot-api": "^1.2.0"
   },
   "devDependencies": {

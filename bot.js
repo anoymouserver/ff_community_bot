@@ -2,19 +2,20 @@
 'use strict'
 
 const path = require('path')
+const _ = require('lodash')
 const BotApi = require('telegram-bot-api')
 const conf = require(path.join(__dirname, 'config.json'))
-const parser = require(path.join(__dirname, 'lib', 'parser.js'))
+const parser = require(path.join(__dirname, 'lib', 'parser'))
 
 var apiOptions = {
-  token: conf.token,
+  token: conf.general.token,
   updates: {
     enabled: true,
-    get_interval: conf.updateInterval
+    get_interval: conf.general.updateInterval
   }
 }
 if (typeof conf.http_proxy === 'object') {
-  apiOptions.http_proxy = conf.http_proxy
+  apiOptions.http_proxy = conf.general.http_proxy
 }
 var api = new BotApi(apiOptions)
 
@@ -32,9 +33,18 @@ api.getMe((err, data) => {
   })
 })
 
-function onMessage (message) {
-  console.log(message)
+var commands = require(path.join(__dirname, 'lib', 'commands'))(api, conf.commands)
 
-  var command = parser(message.text)
-  console.log(command)
+function onMessage (message) {
+  var commandData = parser(message.text)
+
+  if (commandData.user === BotData.username || !commandData.user) {
+    console.log(commandData)
+    if (_.has(commands, commandData.command)) {
+      commands[commandData.command](message, commandData)
+    } else {
+      commands['UNKNOWN'](message, commandData)
+      console.error('unknown command >', commandData.command, '<')
+    }
+  }
 }

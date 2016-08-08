@@ -1,4 +1,9 @@
 {
-  "token": "YOUR_TELEGRAM_BOT_TOKEN",
-  "updateInterval": 1000
+  "general": {
+    "token": "YOUR_TELEGRAM_BOT_TOKEN",
+    "updateInterval": 1000
+  },
+  "commands": {
+    "nodelist": "http://example.com/data/nodelist.json"
+  }
 }
