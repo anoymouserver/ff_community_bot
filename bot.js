@@ -14,7 +14,7 @@ var apiOptions = {
     get_interval: conf.general.updateInterval
   }
 }
-if (typeof conf.http_proxy === 'object') {
+if (typeof conf.general.http_proxy === 'object') {
   apiOptions.http_proxy = conf.general.http_proxy
 }
 var api = new BotApi(apiOptions)
